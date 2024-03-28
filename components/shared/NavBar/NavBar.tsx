@@ -1,7 +1,6 @@
-import { UserButton } from "@clerk/nextjs";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const NavBar = () => {
   return (
@@ -18,16 +17,21 @@ const NavBar = () => {
         </p>
       </Link>
       global search
-      <div className="flex-between flex ">
+      {/*  }} */}
+      <div className="flex-between flex dark:text-light-400 ">
         theme swithcer
-        <UserButton
-          appearance={{
-            elements: { avatarBox: "h-10 w-10" },
-            variables: {
-              colorPrimary: "#ff7000 ",
-            },
-          }}
-        />
+        <SignedIn>
+          <div>You are signed in</div>
+          <UserButton
+            signInUrl="/"
+            appearance={{
+              elements: { avatarBox: "h-10 w-10" },
+              variables: {
+                colorPrimary: "#ff7000 ",
+              },
+            }}
+          />
+        </SignedIn>
       </div>
     </nav>
   );

@@ -16,12 +16,11 @@ const SpaceGrotesk = Space_Grotesk({
   weight: ["300", "400", "500", "600", "700"],
   variable: "--font-SpaceGrotesk ",
 });
-export const metaData: Metadata = {
+
+export const metadata: Metadata = {
   title: "devFlow Next",
   description: "a community driven platform ",
-  icons: ["/assets/images/site-logo.svg"],
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -37,6 +36,7 @@ export default function RootLayout({
         },
       }}
     >
+      {/* eslint-disable-next-line tailwindcss/no-custom-classname */}
       <html className="dark" lang="en">
         <body className={`${inter.variable} ${SpaceGrotesk.variable}`}>
           {children}
