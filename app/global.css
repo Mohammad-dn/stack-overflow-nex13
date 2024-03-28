@@ -1,7 +1,8 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("../styles/theme.css");
+@import url("/styles/theme.css/utilities");
+
 body {
   font-family: "Inter", sans-serif;
 }
@@ -35,8 +36,9 @@ body {
     @apply min-h-full dark:bg-dark-400 bg-light-800 text-light-5;
   }
 }
+
 .no-focus {
-  @apply focus-visible:ring-0 focus-visible:ring-transparent;
+  @apply focus-visible:ring-0 focus-visible:ring-inset;
 }
 .active-theme {
   filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)

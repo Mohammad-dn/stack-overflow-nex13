@@ -1,12 +1,8 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 @layer utilities {
   .background-light850_dark100 {
     @apply bg-light-850 dark:bg-dark-100;
   }
-  .background-light900_dark100 {
+  .background-light900_dark200 {
     @apply bg-light-900 dark:bg-dark-200;
   }
   .background-light900_dark300 {
