@@ -19,7 +19,7 @@ const NavBar = () => {
       global search
       {/*  }} */}
       <div className="flex-between flex dark:text-light-400 ">
-        theme swithcer
+        theme
         <SignedIn>
           <div>You are signed in</div>
           <UserButton
