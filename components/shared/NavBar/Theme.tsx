@@ -36,7 +36,18 @@ const Theme = () => {
         </MenubarTrigger>
         <MenubarContent className="absolute -right-12 mt-3 min-w-[120px] rounded border py-2 dark:border-dark-400 dark:bg-dark-300">
           {themes.map((item) => (
-            <MenubarItem key={item.value}>
+            <MenubarItem
+              className="flex items-center gap-4 px-2.5 py-2 dark:focus:bg-dark-400"
+              onClick={() => {
+                setMode(item.value);
+                if (item.value !== "system") {
+                  localStorage.theme = item.value;
+                } else {
+                  localStorage.removeItem("theme");
+                }
+              }}
+              key={item.value}
+            >
               <Image
                 src={item.icon}
                 alt={item.value}
@@ -44,6 +55,11 @@ const Theme = () => {
                 height={16}
                 className={`${mode === item.value && "active-theme"}`}
               />
+              <p
+                className={`body-semibold text-light-500 ${mode === item.value ? "text-primary-500" : "text-dark100_light900"}`}
+              >
+                {item.value}
+              </p>
             </MenubarItem>
           ))}
         </MenubarContent>
