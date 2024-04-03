@@ -1,47 +1,51 @@
-import { ClerkProvider } from "@clerk/nextjs";
+import type { Metadata } from "next";
+import "./globals.css";
 import React from "react";
-import "./global.css";
-
+import { ClerkProvider } from "@clerk/nextjs";
 // eslint-disable-next-line camelcase
 import { Inter, Space_Grotesk } from "next/font/google";
-import type { Metadata } from "next";
+import { ThemeProvider } from "@/context";
+
+export const metadata: Metadata = {
+  title: "JSM Dev Flow",
+  description:
+    "a community-driven platform for asking and answering programming questions",
+  icons: {
+    icon: "/app/favicon.ico",
+  },
+};
 
 const inter = Inter({
   subsets: ["latin"],
   weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
-  variable: "--font-inter ",
+  variable: "--font-inter",
 });
-const SpaceGrotesk = Space_Grotesk({
+
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
-  variable: "--font-SpaceGrotesk ",
+  variable: "--font-spaceGrotesk",
 });
-export const metaData: Metadata = {
-  title: "devFlow Next",
-  description: "a community driven platform ",
-  icons: ["/assets/images/site-logo.svg"],
-};
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode;
-}) {
+}>) {
   return (
-    <ClerkProvider
-      afterSignInUrl="/"
-      appearance={{
-        elements: {
-          formButtonPrimary: "primary-gradient",
-          footerActionLink: "primary-text-gradient hover:text-primary-500 ",
-        },
-      }}
-    >
-      <html className="dark" lang="en">
-        <body className={`${inter.variable} ${SpaceGrotesk.variable}`}>
-          {children}
-        </body>
-      </html>
-    </ClerkProvider>
+    <html lang="en">
+      <body className={`${inter.variable} ${spaceGrotesk.variable}`}>
+        <ClerkProvider
+          appearance={{
+            elements: {
+              formButtonPrimary: "primary-gradient",
+              footerActionLink: "primary-text-gradient hover:text-primary-500",
+            },
+          }}
+        >
+          <ThemeProvider>{children}</ThemeProvider>
+        </ClerkProvider>
+      </body>
+    </html>
   );
 }

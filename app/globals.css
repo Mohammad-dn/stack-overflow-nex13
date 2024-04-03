@@ -1,8 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@import url("/styles/theme.css/utilities");
-
+@import url("../styles/theme.css");
 body {
   font-family: "Inter", sans-serif;
 }
@@ -17,7 +16,16 @@ body {
     @apply flex justify-start items-center;
   }
   .card-wrapper {
-    @apply bg-light-900 dark:dark-gradient shadow-light-100 dar;
+    @apply bg-light-900 dark:dark-gradient shadow-light-100 dark:shadow-dark-100;
+  }
+  .btn {
+    @apply bg-light-800 dark:bg-dark-300 !important;
+  }
+  .btn-secondary {
+    @apply bg-light-800 dark:bg-dark-400 !important;
+  }
+  .btn-tertiary {
+    @apply bg-light-700 dark:bg-dark-300 !important;
   }
   .markdown {
     @apply max-w-full prose dark:prose-p:text-light-700 dark:pros;
@@ -36,9 +44,8 @@ body {
     @apply min-h-full dark:bg-dark-400 bg-light-800 text-light-5;
   }
 }
-
 .no-focus {
-  @apply focus-visible:ring-0 focus-visible:ring-inset;
+  @apply focus-visible:ring-0 focus-visible:ring-transparent focus-visible:ring-offset-0 !important;
 }
 .active-theme {
   filter: invert(53%) sepia(98%) saturate(3332%) hue-rotate(0deg)
@@ -76,50 +83,51 @@ body {
 .markdown a {
   color: #1da1f2;
 }
-markdown a,
+.markdown a,
 code {
   /* These are technically the same, but use both */
   overflow-wrap: break-word;
   word-wrap: break-word;
   -ms-word-break: break-all;
-  /* This is the dangerous one in WebKit, as it breaks things whereve*/
-  word-break: break-all;
-  /* Instead use this non-standard one: */
+  /* This is the dangerous one in WebKit, as it breaks things whereve
+word-break: break-all;
+/* Instead use this non-standard one: */
   word-break: break-word;
-  /* Adds a hyphen where the word breaks, if supported (No Blink) */
-  -ms-hyphens: auto;
-  -moz-hyphens: auto;
-  -webkit-hyphens: auto;
-  hyphens: auto;
-  padding: 2px;
-  color: #ff7000 !important;
+  /* Adds a hyphen where the word breaks, if supported (No Blink) *
+-ms-hyphens: auto;
+-moz-hyphens: auto;
+-webkit-hyphens: auto;
+hyphens: auto;
+padding: 2px;
+color: #ff7000 !important;
 }
 .markdown pre {
-  display: grid;
-  width: 100%;
+display: grid;
+width: 100%;
 }
 .markdown pre code {
-  width: 100%;
-  display: block;
-  overflow-x: auto;
-  color: inherit !important;
+width: 100%;
+display: block;
+overflow-x: auto;
+color: inherit !important;
 }
 /* Markdown End */
-/* Clerk */
-.cl-internal-b3fm6y {
-  background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
-}
-.hash-span {
-  margin-top: -140px;
-  padding-bottom: 140px;
-  display: block;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.no-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-/* Hide scrollbar for IE, Edge and Firefox */
-.no-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  /* Clerk */
+  .cl-internal-b3fm6y {
+    background: linear-gradient(129deg, #ff7000 0%, #e2995f 100%);
+  }
+  .hash-span {
+    margin-top: -140px;
+    padding-bottom: 140px;
+    display: block;
+  }
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  /* Hide scrollbar for IE, Edge and Firefox */
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 }
