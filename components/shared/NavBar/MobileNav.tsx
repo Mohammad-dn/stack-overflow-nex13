@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 import {
   Sheet,
   SheetClose,
@@ -21,7 +20,6 @@ const NavContent = () => {
         const isActive =
           (pathname.includes(item.route) && item.route.length > 1) ||
           pathname === item.route;
-
         return (
           <SheetClose key={item.route}>
             <Link
@@ -66,33 +64,36 @@ const MobileNav = () => {
             src="/assets/images/site-logo.svg"
             width={23}
             height={23}
-            alt="JSMDefFlow"
+            alt="JSMDevFlow"
           />
           <p className="h2-bold text-dark100_light900 font-spaceGrotesk ">
-            Dev <span className="text-primary-500">OverFlow</span>
+            Dev<span className="text-primary-500">OverFlow</span>
           </p>
         </Link>
-        <SheetClose asChild>
-          <NavContent />
-        </SheetClose>
-        <SignedOut>
-          <div className="flex flex-col gap-3">
-            <SheetClose asChild>
-              <Link href={"/sing-in"}>
-                <Button className="small-medium btn-secondary  min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
-                  <span className="primary-text-gradient">Log in</span>
-                </Button>
-              </Link>
-            </SheetClose>{" "}
-            <SheetClose asChild>
-              <Link href={"/sing-up"}>
-                <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
-                  sign up
-                </Button>
-              </Link>
-            </SheetClose>
-          </div>
-        </SignedOut>
+        <div className="flex h-full flex-col justify-between ">
+          <SheetClose asChild>
+            <NavContent />
+          </SheetClose>
+
+          <SignedOut>
+            <div className="flex flex-col gap-3 p-4 ">
+              <SheetClose asChild>
+                <Link href={"/sing-in"}>
+                  <Button className="small-medium btn-secondary  min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+                    <span className="primary-text-gradient">Log in</span>
+                  </Button>
+                </Link>
+              </SheetClose>{" "}
+              <SheetClose asChild>
+                <Link href={"/sing-up"}>
+                  <Button className="small-medium light-border-2 btn-tertiary text-dark400_light900 min-h-[41px] w-full rounded-lg px-4 py-3 shadow-none">
+                    sign up
+                  </Button>
+                </Link>
+              </SheetClose>
+            </div>
+          </SignedOut>
+        </div>
       </SheetContent>
     </Sheet>
   );
