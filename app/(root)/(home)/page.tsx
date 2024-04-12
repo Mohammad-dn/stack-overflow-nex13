@@ -1,4 +1,4 @@
-import HomeFilters from "@/components/home/HomeFilters";
+import Filter from "@/components/shared/Filter";
 import LocalSearchBar from "@/components/shared/search/LocalSearchBar";
 import { Button } from "@/components/ui/button";
 import { HomePageFilters } from "@/constants/filters";
@@ -16,18 +16,18 @@ const Home = () => {
           </Button>
         </Link>
       </div>
-      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col sm:items-center ">
+      <div className="mt-11 flex justify-between gap-5 max-sm:flex-col  sm:items-center ">
         <LocalSearchBar
           route={""}
           iconPosition="left"
           imgSrc="/assets/icons/search.svg"
           placeholder="search for question"
-          otherClasses="flex-1 "
+          otherClasses="flex-1"
         />{" "}
-        <HomeFilters
+        <Filter
           filters={HomePageFilters}
-          otherClasses="min-h-[56px] sm:min-w-[170px]"
-          containerClasses="hidden max-md:flex"
+          containerClasses="min-h-[56px] sm:min-w-[170px]"
+          otherClasses="hidden max-md:flex"
         />
       </div>
     </>
