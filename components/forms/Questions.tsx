@@ -4,7 +4,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { Button } from "@/components/ui/button";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Editor } from "@tinymce/tinymce-react";
 
 import {
@@ -20,9 +20,10 @@ import { Input } from "@/components/ui/input";
 import { QestionsSchema } from "@/lib/validation";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
-
+const type: any = "create ";
 const Questions = () => {
   const editorRef = useRef(null);
+  const [isSubmiting, setIsSubmiting] = useState(false);
 
   // 1. Define your form.
   const form = useForm<z.infer<typeof QestionsSchema>>({
@@ -36,8 +37,7 @@ const Questions = () => {
 
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof QestionsSchema>) {
-    // Do something with the form values.
-    // ✅ This will be type-safe and validated.
+    setIsSubmiting(true);
     console.log(values);
   }
   const handelInputKeyDown = (
@@ -196,7 +196,17 @@ const Questions = () => {
             </FormItem>
           )}
         />
-        <Button type="submit">Submit</Button>
+        <Button
+          className="primary-gradient w-fit text-light-900"
+          disabled={isSubmiting}
+          type="submit"
+        >
+          {isSubmiting ? (
+            <>{type === "edit" ? "Editing..." : "Postring..."}</>
+          ) : (
+            <>{type === "edit" ? "Edit question" : "Ask a question"}</>
+          )}
+        </Button>
       </form>
     </Form>
   );
