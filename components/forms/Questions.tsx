@@ -38,7 +38,14 @@ const Questions = () => {
   // 2. Define a submit handler.
   function onSubmit(values: z.infer<typeof QestionsSchema>) {
     setIsSubmiting(true);
-    console.log(values);
+    try {
+      // make an async call to your api -> create a question
+      // contain all form data
+      // navigate to home page
+    } catch (error) {
+    } finally {
+      setIsSubmiting(true);
+    }
   }
   const handelInputKeyDown = (
     e: React.KeyboardEvent<HTMLInputElement>,
