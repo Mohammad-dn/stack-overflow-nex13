@@ -20,6 +20,7 @@ import { Input } from "@/components/ui/input";
 import { QestionsSchema } from "@/lib/validation";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
+import { createQustion } from "@/lib/actions/question.actions";
 const type: any = "create ";
 const Questions = () => {
   const editorRef = useRef(null);
@@ -36,12 +37,13 @@ const Questions = () => {
   });
 
   // 2. Define a submit handler.
-  function onSubmit(values: z.infer<typeof QestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QestionsSchema>) {
     setIsSubmiting(true);
     try {
       // make an async call to your api -> create a question
       // contain all form data
       // navigate to home page
+      await createQustion({});
     } catch (error) {
     } finally {
       setIsSubmiting(true);
@@ -120,7 +122,11 @@ const Questions = () => {
                     // @ts-ignore
                     editorRef.current = editor;
                   }}
-                  initialValue="<p>This is the initial content of the editor.</p>"
+                  onBlur={field.onBlur}
+                  onEditorChange={(content) => {
+                    field.onChange(content);
+                  }}
+                  initialValue=""
                   init={{
                     height: 300,
                     menubar: false,
