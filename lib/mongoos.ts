@@ -11,7 +11,7 @@ export const connectedToDatabase = async () => {
 
   try {
     mongoos.connect(process.env.MONGODB_URL, {
-      dbName: "DevFlow_train",
+      dbName: "devFlow",
     });
     isConnected = true;
     console.log("MongoDb is connected");
