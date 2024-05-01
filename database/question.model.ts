@@ -17,7 +17,7 @@ const QuestionShema = new Schema({
   content: { type: String, required: true },
   tags: [{ type: Schema.Types.ObjectId, ref: "Tag" }],
   views: { type: Number, default: 0 },
-  upvots: [{ type: Schema.Types.ObjectId, ref: "User" }],
+  upvotes: [{ type: Schema.Types.ObjectId, ref: "User" }],
   downvots: [{ type: Schema.Types.ObjectId, ref: "User" }],
   author: [{ type: Schema.Types.ObjectId, ref: "User" }],
   answers: [{ type: Schema.Types.ObjectId, ref: "Answer" }],

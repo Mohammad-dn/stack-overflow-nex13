@@ -5,7 +5,7 @@ import { formatAndDivideNumber, getTimeStamp } from "@/lib/utils";
 
 interface QestionProps {
   title: string;
-  upvotes: number;
+  upvotes: string[];
   answers: Array<object>;
   _id: string;
   tags: {
@@ -60,10 +60,10 @@ const QestionCard = ({
         />
         <Metric
           imgUrl="/assets/icons/like.svg"
-          alt="Upvotes"
+          alt="upvotes"
           title=" vots"
           textStyles="smal-medium text-dark400_light800"
-          value={formatAndDivideNumber(upvotes)}
+          value={formatAndDivideNumber(upvotes?.length)}
         />
         <Metric
           imgUrl="/assets/icons/message.svg"
