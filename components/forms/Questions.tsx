@@ -25,6 +25,7 @@ import {
   // usePathname,
   useRouter,
 } from "next/navigation";
+import { useTheme } from "@/context";
 const type: any = "create ";
 
 interface Props {
@@ -32,6 +33,8 @@ interface Props {
 }
 const Questions = ({ mongoUserId }: Props) => {
   const editorRef = useRef(null);
+  const { mode } = useTheme();
+
   const [isSubmiting, setIsSubmiting] = useState(false);
   const router = useRouter();
   // const pathname = usePathname();
@@ -141,18 +144,16 @@ const Questions = ({ mongoUserId }: Props) => {
               </FormLabel>
               <FormControl className="mt-3.5">
                 <Editor
-                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
-                  onInit={(_evt, editor) => {
+                  onInit={(evt, editor) => {
                     // @ts-ignore
                     editorRef.current = editor;
                   }}
+                  initialValue={""}
                   onBlur={field.onBlur}
-                  onEditorChange={(content) => {
-                    field.onChange(content);
-                  }}
-                  initialValue=""
+                  onEditorChange={(content) => field.onChange(content)}
+                  apiKey={process.env.NEXT_PUBLIC_TINY_EDITOR_API_KEY}
                   init={{
-                    height: 300,
+                    height: 350,
                     menubar: false,
                     plugins: [
                       "advlist",
@@ -165,20 +166,21 @@ const Questions = ({ mongoUserId }: Props) => {
                       "anchor",
                       "searchreplace",
                       "visualblocks",
-                      "code",
+                      "codesample",
                       "fullscreen",
                       "insertdatetime",
                       "media",
                       "table",
-                      "codesample",
                     ],
                     toolbar:
-                      "undo redo | blocks | " +
-                      "codesample | bold italic forecolor | alignleft aligncenter " +
-                      "alignright alignjustify | bullist numlist ",
-                    content_style: "body { font-family:Inter, font-size:16px }",
+                      "undo redo | " +
+                      "codesample | bold italic forecolor | alignleft aligncenter |" +
+                      "alignright alignjustify | bllist numlist",
+                    content_style: "body { font-family:Inter; font-size:16px }",
+                    skin: mode === "dark" ? "oxide-dark" : "oxide",
+                    content_css: mode === "dark" ? "dark" : "light",
                   }}
-                />
+                ></Editor>
               </FormControl>
               <FormDescription className="body-regular mt-2.5 text-light-500 ">
                 introduce your problem and expand on what you put in the title.

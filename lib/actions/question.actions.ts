@@ -5,9 +5,11 @@ import { connectedToDatabase } from "../mongoos";
 import Tag from "@/database/tag.model";
 import { GetQuestionsParams } from "./shared.types";
 import User from "@/database/user.model";
+import { revalidatePath } from "next/cache";
 export async function getQuestions(params: GetQuestionsParams) {
   try {
     connectedToDatabase();
+
     const questions = await Question.find({})
       .populate({
         path: "tags",
@@ -59,6 +61,7 @@ export async function createQustion(param: any) {
 
     // create an interaction reacord for the user's ask question action
     // increment authur's reputation by +S for creating a question
+    revalidatePath(path);
   } catch (error) {
     console.log("error", error);
   }
