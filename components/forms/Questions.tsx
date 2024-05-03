@@ -21,10 +21,7 @@ import { QestionsSchema } from "@/lib/validation";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
 import { createQustion } from "@/lib/actions/question.actions";
-import {
-  // usePathname,
-  useRouter,
-} from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/context";
 const type: any = "create ";
 
@@ -37,7 +34,7 @@ const Questions = ({ mongoUserId }: Props) => {
 
   const [isSubmiting, setIsSubmiting] = useState(false);
   const router = useRouter();
-  // const pathname = usePathname();
+  const pathname = usePathname();
   // 1. Define your form.
   const form = useForm<z.infer<typeof QestionsSchema>>({
     resolver: zodResolver(QestionsSchema),
@@ -60,12 +57,14 @@ const Questions = ({ mongoUserId }: Props) => {
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
       console.log({
         title: values.title,
         content: values.explanation,
         tags: values.tags,
         author: JSON.parse(mongoUserId),
+        path: pathname,
       });
 
       // navigate to home page
