@@ -11,7 +11,7 @@ export const metadata: Metadata = {
   description:
     "a community-driven platform for asking and answering programming questions",
   icons: {
-    icon: "/app/favicon.ico",
+    icon: "/public/favicon.ico",
   },
 };
 
