@@ -6,10 +6,24 @@ import {
   CreateUserParams,
   DeleteUserParams,
   UpdateUserParams,
+  getUserByIdParams,
 } from "./shared.types";
 import { revalidatePath } from "next/cache";
 import Question from "@/database/question.model";
+export const getUserById = async (params: getUserByIdParams) => {
+  try {
+    connectedToDatabase();
 
+    const { userId } = params;
+
+    const user = await User.findOne({ clerkId: userId });
+
+    return user;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};
 export async function createUser(userData: CreateUserParams) {
   try {
     connectedToDatabase();
@@ -49,6 +63,7 @@ export async function deleteUser(params: DeleteUserParams) {
     // and question, answers, comments, etc
     // get user question id
 
+    // eslint-disable-next-line no-unused-vars
     const questionUserIds = await Question.find({ author: user._id }).distinct(
       "_id"
     );
