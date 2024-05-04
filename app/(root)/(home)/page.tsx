@@ -40,8 +40,8 @@ const Home = async () => {
       <HomeFilters filters={[]} />
       <div className="mt-10 flex w-full flex-col gap-6 ">
         {/* Looping through questions  */}
-        {result.questions.length > 0 ? (
-          result.questions.map((question) => (
+        {result?.questions.length > 0 ? (
+          result?.questions.map((question) => (
             <QestionCard
               key={question._id}
               _id={question._id}

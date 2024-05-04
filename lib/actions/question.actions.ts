@@ -9,7 +9,6 @@ import { revalidatePath } from "next/cache";
 export async function getQuestions(params: GetQuestionsParams) {
   try {
     connectedToDatabase();
-
     const questions = await Question.find({})
       .populate({
         path: "tags",
@@ -17,6 +16,7 @@ export async function getQuestions(params: GetQuestionsParams) {
       })
       .populate({ path: "author", model: User })
       .sort({ createdAt: -1 });
+
     return { questions };
   } catch (error) {
     console.log(error);
@@ -38,7 +38,6 @@ export async function createQustion(param: any) {
       author,
       path,
     });
-    console.log(question);
 
     const tagDocument = [];
     // create the tag or get them if they already exist
