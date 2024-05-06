@@ -2,7 +2,7 @@
 import { Webhook } from "svix";
 import { headers } from "next/headers";
 import { WebhookEvent } from "@clerk/nextjs/server";
-import { createUser, updateUser } from "@/lib/actions/user.action";
+import { createUser, deleteUser, updateUser } from "@/lib/actions/user.action";
 import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
@@ -15,6 +15,7 @@ export async function POST(req: Request) {
       "Please add WEBHOOK_SECRET from Clerk Dashboard to .env or .env.local"
     );
   }
+  console.log(WEBHOOK_SECRET);
 
   // Get the headers
   const headerPayload = headers();
@@ -85,5 +86,15 @@ export async function POST(req: Request) {
     });
 
     return NextResponse.json({ message: "ok", user: mongoUser });
+    // create a new user in your data base
   }
+  if (eventType === "user.deleted") {
+    const { id } = evt.data;
+
+    const deletedUser = await deleteUser({
+      clerkId: id!,
+    });
+    return NextResponse.json({ message: "ok", user: deletedUser });
+  }
+  return new Response("", { status: 201 });
 }
