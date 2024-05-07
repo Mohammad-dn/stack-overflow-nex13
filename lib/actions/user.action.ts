@@ -30,7 +30,7 @@ export async function createUser(userData: CreateUserParams) {
     const newUser = await User.create(userData);
     return newUser;
   } catch (error) {
-    console.log(error);
+    console.log("create user", error);
     throw error;
   }
 }
