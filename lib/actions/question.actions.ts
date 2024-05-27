@@ -3,7 +3,11 @@
 import Question from "@/database/question.model";
 import { connectedToDatabase } from "../mongoos";
 import Tag from "@/database/tag.model";
-import { GetQuestionsParams } from "./shared.types";
+import {
+  CreateQuestionParams,
+  GetQuestionByIdParams,
+  GetQuestionsParams,
+} from "./shared.types";
 import User from "@/database/user.model";
 import { revalidatePath } from "next/cache";
 export async function getQuestions(params: GetQuestionsParams) {
@@ -24,7 +28,7 @@ export async function getQuestions(params: GetQuestionsParams) {
   }
 }
 
-export async function createQustion(param: any) {
+export async function createQustion(param: CreateQuestionParams) {
   // eslint-disable-next-line no-empty
   try {
     connectedToDatabase();
@@ -36,9 +40,13 @@ export async function createQustion(param: any) {
       title,
       content,
       author,
-      path,
     });
-
+    console.log("====================================");
+    console.log("question", question);
+    console.log("====================================");
+    console.log("====================================");
+    console.log("author", author);
+    console.log("====================================");
     const tagDocument = [];
     // create the tag or get them if they already exist
     for (const tag of tags) {
@@ -66,3 +74,27 @@ export async function createQustion(param: any) {
     console.log("error", error);
   }
 }
+export const getQuestionById = async (params: GetQuestionByIdParams) => {
+  try {
+    connectedToDatabase();
+
+    const { questionId } = params;
+
+    const question = await Question.findById(questionId)
+      .populate({
+        path: "tags",
+        model: Tag,
+        select: "_id name",
+      })
+      .populate({
+        path: "author",
+        model: User,
+        select: "_id clerkId name picture",
+      });
+
+    return question;
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
+};

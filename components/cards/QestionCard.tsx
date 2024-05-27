@@ -45,7 +45,7 @@ const QestionCard = ({
       {/* if sign in add edit delete action */}
       <div className="mt-3.5 flex flex-wrap gap-2">
         {tags.map((tag) => (
-          <RenderTag key={tag._id} name={tag.name} _id={tag._id} />
+          <RenderTag key={tag?._id} name={tag?.name} _id={tag?._id} />
         ))}
       </div>
       <div className="flex-between mt-6  w-full flex-wrap gap-3">
@@ -70,7 +70,7 @@ const QestionCard = ({
           alt="Message"
           title=" Message"
           textStyles="smal-medium text-dark400_light800"
-          value={formatAndDivideNumber(answers.length)}
+          value={formatAndDivideNumber(answers?.length)}
         />
         <Metric
           imgUrl="/assets/icons/eye.svg"

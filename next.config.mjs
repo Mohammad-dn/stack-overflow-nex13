@@ -5,6 +5,18 @@ const nextConfig = {
     mdxRs: true,
     serverComponentsExternalPackages: ["mongoos"],
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "*",
+      },
+      {
+        protocol: "http",
+        hostname: "*",
+      },
+    ],
+  },
 };
 
 export default nextConfig;

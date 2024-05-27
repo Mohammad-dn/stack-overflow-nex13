@@ -31,7 +31,9 @@ interface Props {
 const Questions = ({ mongoUserId }: Props) => {
   const editorRef = useRef(null);
   const { mode } = useTheme();
-
+  console.log("====================================");
+  console.log(mongoUserId);
+  console.log("====================================");
   const [isSubmiting, setIsSubmiting] = useState(false);
   const router = useRouter();
   const pathname = usePathname();
@@ -233,7 +235,7 @@ const Questions = ({ mongoUserId }: Props) => {
           type="submit"
         >
           {isSubmiting ? (
-            <>{type === "edit" ? "Editing..." : "Postring..."}</>
+            <>{type === "edit" ? "Editing..." : "Posting..."}</>
           ) : (
             <>{type === "edit" ? "Edit question" : "Ask a question"}</>
           )}
