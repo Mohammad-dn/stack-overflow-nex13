@@ -99,10 +99,9 @@ export async function getAllUsers(params: GetAllUsersParams) {
   }
 }
 
-// export async function getAllUsers(params: GetAllUsersParams) {}
-// try {
+// export async function getAllUsers(params: GetAllUsersParams) {// try {
 //   connectedToDatabase();
 // } catch (error) {
 //   console.log(error);
 //   throw error;
-// }
+// }}
