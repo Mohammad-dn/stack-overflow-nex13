@@ -1,4 +1,4 @@
-import QestionCard from "@/components/cards/QestionCard";
+import QuestionCard from "@/components/cards/QuestionCard";
 import HomeFilters from "@/components/home/HomeFilters";
 import Filter from "@/components/shared/Filter";
 import NoResult from "@/components/shared/NoResult/NoResult";
@@ -41,7 +41,7 @@ const Home = async () => {
         {/* Looping through questions  */}
         {result?.questions.length > 0 ? (
           result?.questions.map((question) => (
-            <QestionCard
+            <QuestionCard
               key={question._id}
               _id={question._id}
               title={question.title}
@@ -60,7 +60,7 @@ const Home = async () => {
           discussion. our query could be the next big thing others learn from. Get
           involved! 💡"
             link="/"
-            linkTitle="Ask Qestions"
+            linkTitle="Ask Questions"
           />
         )}
       </div>

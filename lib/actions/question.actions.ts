@@ -28,7 +28,7 @@ export async function getQuestions(params: GetQuestionsParams) {
   }
 }
 
-export async function createQustion(param: CreateQuestionParams) {
+export async function createQuestion(param: CreateQuestionParams) {
   // eslint-disable-next-line no-empty
   try {
     connectedToDatabase();

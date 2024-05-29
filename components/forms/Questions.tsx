@@ -17,10 +17,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { QestionsSchema } from "@/lib/validation";
+import { QuestionsSchema } from "@/lib/validation";
 import { Badge } from "../ui/badge";
 import Image from "next/image";
-import { createQustion } from "@/lib/actions/question.actions";
+import { createQuestion } from "@/lib/actions/question.actions";
 import { usePathname, useRouter } from "next/navigation";
 import { useTheme } from "@/context";
 const type: any = "create ";
@@ -38,8 +38,8 @@ const Questions = ({ mongoUserId }: Props) => {
   const router = useRouter();
   const pathname = usePathname();
   // 1. Define your form.
-  const form = useForm<z.infer<typeof QestionsSchema>>({
-    resolver: zodResolver(QestionsSchema),
+  const form = useForm<z.infer<typeof QuestionsSchema>>({
+    resolver: zodResolver(QuestionsSchema),
     defaultValues: {
       title: "",
       explanation: "",
@@ -48,13 +48,13 @@ const Questions = ({ mongoUserId }: Props) => {
   });
 
   // 2. Define a submit handler.
-  async function onSubmit(values: z.infer<typeof QestionsSchema>) {
+  async function onSubmit(values: z.infer<typeof QuestionsSchema>) {
     setIsSubmiting(true);
     try {
       // make an async call to your api -> create a question
       // contain all form data
       // navigate to home page
-      await createQustion({
+      await createQuestion({
         title: values.title,
         content: values.explanation,
         tags: values.tags,
