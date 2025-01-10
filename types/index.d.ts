@@ -38,3 +38,6 @@ export interface BadgeCounts {
   BRONZE: number;
 }
 export type BadgeCriteriaType = keyof typeof BADGE_CRITERIA;
+export interface ParamsProps2 {
+  params: { id: string };
+}
