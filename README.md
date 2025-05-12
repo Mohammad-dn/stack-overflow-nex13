@@ -12,14 +12,6 @@ yarn dev
 pnpm dev
 # or
 
-
-
-
-
-
-
-
-
 bun prod
 ``
 
