@@ -20,8 +20,6 @@ bun prod
 
 
 
-
-
 { read me .md is updated succsesfuly }
 
 
